@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomersJPARepository extends JpaRepository<CustomerEntity,String> {
+
+    CustomerEntity getByPassportNumber(String passportNumber);
 }
