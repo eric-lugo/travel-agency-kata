@@ -7,6 +7,7 @@ import lombok.SneakyThrows;
 import lombok.Value;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.UUID;
 
 @Value
@@ -26,6 +27,8 @@ public class CreateCustomerCommand {
                 .surnames(surnames)
                 .birthDate(birthDate)
                 .passportNumber(passportNumber)
+                .enrollmentDate(LocalDate.now())
+                .active(true)
                 .build();
         customersRepository.saveCustomer(customer);
         return customer.getId();

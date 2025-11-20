@@ -21,6 +21,7 @@ public class CustomersInDataBase implements CustomersRepository {
                 CustomerEntity.builder()
                         .id(customer.getId())
                         .name(customer.getName())
+                        .surnames(customer.getSurnames())
                         .birthDate(customer.getBirthDate())
                         .passportNumber(customer.getPassportNumber())
                         .enrollmentDate(customer.getEnrollmentDate())
@@ -51,6 +52,21 @@ public class CustomersInDataBase implements CustomersRepository {
 
     @Override
     public Optional<Customer> getCustomerByPassport(String id) {
-        return Optional.empty();
+        Optional<CustomerEntity> searchedCustomer = customersJPARepository.getByPassportNumber(id);
+        if (searchedCustomer.isPresent()){
+            CustomerEntity customerEntity = searchedCustomer.get();
+            Optional<Customer> optionalCustomer = Optional.of(
+                    Customer.builder()
+                            .id(customerEntity.getId())
+                            .name(customerEntity.getName())
+                            .surnames(customerEntity.getSurnames())
+                            .birthDate(customerEntity.getBirthDate())
+                            .passportNumber(customerEntity.getPassportNumber())
+                            .enrollmentDate(customerEntity.getEnrollmentDate())
+                            .active(customerEntity.getActive())
+                            .build()
+            );
+            return optionalCustomer;
+        }else return Optional.empty();
     }
 }
