@@ -28,10 +28,7 @@ public class CustomersController {
     public ResponseEntity putCustomer(@RequestBody PutCustomerDTO customer) {
         log.info("POST customer {}", customer);
         CreateCustomerCommand command = CreateCustomerCommand.builder()
-                .name(customer.getName())
-                .surnames(customer.getSurnames())
-                .birthDate(customer.getBirthDate())
-                .passportNumber(customer.getPassportNumber())
+                .customerInformation(customer)
                 .customersRepository(customersRepository)
                 .build();
         String id = command.handle();

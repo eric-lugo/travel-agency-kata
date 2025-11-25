@@ -35,3 +35,6 @@ Principios SOLID observados:
 
 Refactorización hecha:
 
+
+- He visto que en la clase PutCustomerDTO y CreateCustomerCommand se repetían los atributos y se pasaban de una clase a otra por lo que era un poco innecesario. Para solucionar esto, directamente he generado el id en PutCustomerDTO y he borrado todos los atributos que se repetían en la CreateCustomerCommand y lo sustituí por un objeto PutCustomerDTO que ya contiene todos los datos para guardar el cliente.
+
