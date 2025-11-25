@@ -23,3 +23,15 @@ Patrones de diseño observados:
 
 
 Principios SOLID observados:
+
+- He podido observar que las clases tienen responsabilidad única como el controlador o  create customer command
+
+
+- Se ha utilizado inversion de dependencias ya que se utilzan interfaces para no depender de las clases directamente
+
+
+- El principio open/closed se cumple parcialmente ya que esta abierto a extensión como en el caso de las bases de datos. Sin embargo, hay partes del codigo que estan muy acoplados que son difíciles de extender.
+
+
+Refactorización hecha:
+
